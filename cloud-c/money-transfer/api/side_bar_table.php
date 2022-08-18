@@ -9,7 +9,7 @@ if (isset($_SERVER['PHP_AUTH_USER']))
 	}
 }
 $protocol = ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] != 'off') || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
-$domainName = "backend:8080";
+$domainName = "10.0.20.100";
 ?>
 
 	  <table class="table table-compact smaller text-faded mb-0">
