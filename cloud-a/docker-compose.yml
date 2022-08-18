@@ -21,66 +21,15 @@ services:
       - ./backend/files/:/usr/share/nginx/html/backend/files/
     restart: "unless-stopped"
     depends_on:
-      - fastcgi     
+      - fastcgi
   reverse-proxy:
-    build: 
+    build:
       context: ./nginx-reverse-proxy
-    ports: 
+    ports:
       - 80:8080
     restart: "unless-stopped"
     environment:
-      USER_ZONE: f5-demo.com
+      USER_ZONE: user_zone.f5-demo.com
     depends_on:
       - frontend
       - backend
-
-  #  environment:
-  #     PMA_HOST: localhost
-  # backend:
-  #   build: 
-  #     context: ./backend
-  #   volumes:
-  #     - ./backend/files/:/var/www/html/files/
-  #   ports: 
-  #     - 3082:80    
-  #   hostname: backend.internal
-  # money-transfer:
-  #   build: 
-  #     context: ./money-transfer
-  #   volumes:
-  #     - ./money-transfer/api/:/var/www/html/api/
-  #   hostname: money-transfer.internal
-  # refer-a-friend:
-  #   build: 
-  #     context: ./refer-a-friend
-  #   volumes:
-  #     - ./refer-a-friend/app3/:/var/www/html/app3/
-  #   ports: 
-  #     - 3083:80
-  #   hostname: refer-a-friend.internal
-  # nginx:
-  #   build: 
-  #     context: ./nginx-reverse-proxy
-  #   ports: 
-  #     - 3080:80
-  #   depends_on:
-  #     - frontend
-  #     - backend
-  # mortgage-fastcgi:
-  #   build: 
-  #     context: ./mortgage-calculator
-  #     dockerfile: phpfpm.Dockerfile
-  #   volumes:
-  #     - ./mortgage-calculator/mortgage/:/usr/share/nginx/html/mortgage/
-  #   hostname: fastcgi
-  # mortgage-nginx:
-  #   build: 
-  #     context: ./mortgage-calculator
-  #     dockerfile: nginx.Dockerfile      
-  #   volumes:
-  #     - ./mortgage-calculator/mortgage/:/usr/share/nginx/html/mortgage/      
-  #   ports: 
-  #    - 5080:8080
-  #   hostname: mortgage-nginx.internal
-  #   depends_on:
-  #     - mortgage-fastcgi     
