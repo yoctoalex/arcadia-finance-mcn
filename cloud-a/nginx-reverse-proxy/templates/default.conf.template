@@ -36,9 +36,9 @@ server {
         proxy_pass http://$friend;
     }
 
-    // location /mortgage {
-    //     resolver 127.0.0.11;
-    //     set $mortgage mortgage.${USER_ZONE}:8080;
-    //     proxy_pass http://$mortgage;
-    // }
+    # location /mortgage {
+    #     resolver 127.0.0.11;
+    #     set $mortgage mortgage.${USER_ZONE}:8080;
+    #     proxy_pass http://$mortgage;
+    # }
 }
