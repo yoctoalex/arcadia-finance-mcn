@@ -27,12 +27,12 @@ server {
     location /api {
         resolver 127.0.0.11;
         set $transfer 192.168.100.100;
-        proxy_pass http://$transfer/api/;
+        proxy_pass http://$transfer;
     }
 
     location /app3 {
         resolver 127.0.0.11;
-        set $friend refer-a-friend.${USER_ZONE}:8080;
+        set $friend friends.${USER_ZONE};
         proxy_pass http://$friend;
     }
 
